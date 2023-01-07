@@ -1,6 +1,7 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
+const bodyParser = require("body-parser");
 const port = 3000;
 
 if (process.env.NODE_ENV !== "production") {
@@ -19,15 +20,18 @@ db.on("error", (err) => console.error(err));
 db.once("open", () => console.log("Connnected to Mongoose"));
 
 const indexRouter = require("./routes/index");
+const authorsRouter = require("./routes/authors");
 
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 app.set("layout", "layouts/layout");
 app.use(expressLayouts);
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
 
 app.use("/", indexRouter);
+app.use("/authors", authorsRouter);
 
 app.listen(process.env.PORT || port, () =>
-  console.log(`Example app listening on port ${process.env.PORT || port}!`)
+  console.log(`App listening on port ${process.env.PORT || port}!`)
 );

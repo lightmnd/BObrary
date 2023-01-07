@@ -1,0 +1,17 @@
+<div id="container">
+    <h2>Search Authors</h2>
+    <form action="/authors" method="get">
+        <label for="name">Author Name</label>
+        <input type="search" name="name" value="<%= searchOpt.name %>" />
+        <button type="submit">Search</button>
+    </form>
+
+    <% for(let i = 0; i < authors.length; i++) { %>
+        <ul>
+            <li>
+                <%= authors[i].name %>
+            </li>
+        </ul>
+
+        <% } %>
+</div>
