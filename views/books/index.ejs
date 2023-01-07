@@ -1,0 +1,19 @@
+<div id="container">
+    <h2>Search by Book or Author</h2>
+    <form action="/books" method="get">
+        <label for="name">Book or Author name </label>
+        <input type="search" name="name" value="<%= searchOpt.title || searchOpt.author %>" />
+        <button type="submit">Search</button>
+    </form>
+
+    <% for(let i = 0; i < books.length; i++) { %>
+        <% console.log("books", books)
+  %>
+            <ul>
+                <li>
+                    <%= books[i].title %>
+                </li>
+            </ul>
+
+            <% } %>
+</div>
