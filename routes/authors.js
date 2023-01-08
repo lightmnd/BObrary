@@ -9,7 +9,6 @@ router.get("/", async (req, res) => {
   }
   try {
     const authors = await Author.find(searchOpt);
-    console.log("authors", authors);
     res.render("authors/index", {
       authors: authors,
       searchOpt: req.query,
